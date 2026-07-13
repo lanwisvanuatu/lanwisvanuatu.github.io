@@ -33,6 +33,10 @@ body {
 }
 .site-title { margin: 0; font-size: 1.6rem; letter-spacing: 0.2px; }
 .site-tagline { margin: 4px 0 0; opacity: 0.85; font-size: 0.95rem; }
+/* On .legal pages, `.legal p` would darken the header tagline (a <p>) to near-invisible
+   against the dark header. Keep header text light so it pops. */
+.site-header .site-title,
+.site-header .site-tagline { color: #fff; }
 
 /* Intro */
 .intro {
@@ -108,6 +112,54 @@ body {
 }
 .site-footer a { color: var(--accent); }
 .copyright { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+
+/* Call-to-action button (testers page) */
+.cta-wrap { margin: 20px 0; }
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.cta-button:hover { background: #164f53; }
+/* Keep button text white even on .legal pages, where `.legal a` would otherwise
+   force the dark accent color onto the dark accent button (invisible text). */
+.legal .cta-button { color: #fff; }
+
+/* Numbered steps (testers page) */
+.steps { counter-reset: step; list-style: none; padding-left: 0; margin: 20px 0; }
+.steps > li { position: relative; padding: 2px 0 20px 48px; margin: 0; }
+.steps > li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  width: 32px; height: 32px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.steps h3 { margin: 2px 0 6px; font-size: 1.05rem; }
+.steps p { margin: 0 0 6px; }
+
+/* Callout note (testers page) */
+.note {
+  background: #eef4f4;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 22px 0;
+  font-size: 0.95rem;
+}
+.note strong { color: var(--ink); }
 
 /* Privacy page typography */
 .legal { background: var(--card); }
